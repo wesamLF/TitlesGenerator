@@ -1,0 +1,16 @@
+#main-btn.active{
+    background-color: rgba(156, 146, 119, 0.466) !important;
+    box-shadow: inset 2px -2px 0px black !important; 
+     cursor: default !important;
+    transform: none !important;
+}
+ #main-btn.active:hover{
+    transform: none !important;
+
+}
+
+nav .active{
+   border-bottom: 3px solid white;
+    cursor: default !important;
+}
+
