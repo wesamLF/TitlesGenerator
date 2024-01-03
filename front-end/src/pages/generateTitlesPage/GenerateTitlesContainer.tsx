@@ -22,8 +22,8 @@ const GenerateTitlesContainer = () => {
 
             <section className='p-0 md:px-24 md:py-16  w-full h-full'>
                 <GenerateTitlesFormTools fetchData={fetchData} loading={loading} />
-                <div className="my-3 h-full min-h-[450px] overflow-auto border border-solid border-[gray]  rounded-xl shadow-xl bg-white">
-                    <div className=" mx-auto ">
+                <div className="my-3 h-full min-h-[450px] overflow-auto border border-solid border-[gray] shadow-md shadow-gray-500 bg-white">
+                    <div className="">
                         {/* context={{ data, loading, error }}  */}
                         <Outlet context={{ fromMostViewed, fromAi, loading, error }} />
                     </div>

@@ -51,18 +51,18 @@ const TrendingFormTools = ({ fetchData, loading }:
 
 
   return (
-    <div className='border border-solid border-[gray]  rounded-xl shadow-xl bg-white'>
+    <div className='border border-solid border-[gray]  shadow-md shadow-gray-500 bg-white'>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="">
-          <div className="flex flex-row items-end justify-between w-full p-6 gap-5">
-            <div className="  flex justify-center w-1/4 ">
+          <div className="flex flex-col md:flex-row items-center md:items-end justify-center md:justify-between w-full p-6 gap-5">
+            <div className="  flex justify-center items-center w-full md:w-1/4 ">
               <LangSelector form={form as any} />
             </div>
-            <div className=" flex justify-center flex-col w-1/4 ">
+            <div className=" flex justify-center items-center w-full md:w-1/4  ">
               <GenreSelector form={form} />
             </div>
 
-            <div className=" w-1/2 px-8 flex flex-row gap-4">
+            <div className=" w-full md:w-1/2 px-8 flex justify-center flex-row gap-4">
               <div className="bg-greden-200 flex justify-center w-full ">
                 <Button className="w-full" name="genres" type="submit"
                   disabled={loading}

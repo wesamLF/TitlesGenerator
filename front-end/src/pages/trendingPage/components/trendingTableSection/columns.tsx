@@ -17,7 +17,11 @@ export type VideoData = {
 export const columns: ColumnDef<VideoData>[] = [
   {
     accessorKey: "title",
-    header: () => <div className=" font-bold">Title</div>,
+    header: () => <div className=" font-bold">Channel Name</div>,
+    cell: ({ row }) => {
+      const title = new String(row.getValue("title"))
+      return <div className=" cursor-pointer font-medium hover:text-gray-600">{title}</div>
+    },
 
   },
   {
@@ -33,11 +37,11 @@ export const columns: ColumnDef<VideoData>[] = [
   },
   {
     accessorKey: "views",
-    header: ()=><>views</>,
+    header: () => <>views</>,
   },
   {
     accessorKey: "videoLink",
-    header: ()=>"videoLink",
+    header: () => "videoLink",
 
   },
   {

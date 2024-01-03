@@ -1,6 +1,7 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
+import { goTo } from "@/utils/goTo"
 
 const Table = React.forwardRef<
   HTMLTableElement,
@@ -71,10 +72,10 @@ const TableHead = React.forwardRef<
   React.ThHTMLAttributes<HTMLTableCellElement>
 >(({ className, ...props }, ref) => {
   const temp = props.children as any
-  if(temp?.props?.column?.id === "videoLink" ) return 
-  if(temp?.props?.column?.id === "channleLink" ) return 
+  if (temp?.props?.column?.id === "videoLink") return
+  if (temp?.props?.column?.id === "channleLink") return
 
- return <th
+  return <th
     ref={ref}
     className={cn(
       "h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0",
@@ -90,12 +91,25 @@ const TableCell = React.forwardRef<
   React.TdHTMLAttributes<HTMLTableCellElement>
 >(({ className, ...props }, ref) => {
   const temp = props.children as any
-  if(temp?.props?.column?.id === "channleLink" ) return
-  if(temp?.props?.column?.id === "videoLink" ) return
-
+  const channleLink = temp?.props?.row?.original?.channleLink
+  const videoLink = temp?.props?.row?.original?.videoLink
+  if (temp?.props?.column?.id === "channleLink") return
+  if (temp?.props?.column?.id === "videoLink") return
+  if (temp?.props?.column?.id === "channleName") return <td
+  onClick={()=>goTo(channleLink)}
+  ref={ref}
+  className={cn("p-4 align-middle [&:has([role=checkbox])]:pr-0", className)}
+  {...props}
+/>
+  if (temp?.props?.column?.id === "title") return <td
+    onClick={()=>goTo(videoLink)}
+    ref={ref}
+    className={cn("p-4  align-middle [&:has([role=checkbox])]:pr-0", className)}
+    {...props}
+  />
   return <td
     ref={ref}
-    className={cn("p-4 align-middle [&:has([role=checkbox])]:pr-0", className)}
+    className={cn("p-4 text-base align-middle [&:has([role=checkbox])]:pr-0", className)}
     {...props}
   />
 })

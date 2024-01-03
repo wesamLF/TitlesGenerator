@@ -11,11 +11,9 @@ const HowItWorks = () => {
             <h1 className=" text-4xl font-bold">How it Works?</h1>
             <div className="w-full flex justify-center items-center flex-col md:flex-row">
                 <div className="w-full md:w-1/2 p-10 ">
-
                         <img src="./images/gifs/gif2.gif" className=" object-contain"></img>
-                
                 </div>
-                <div className="w-full md:w-1/2 "><Accordion type="single" collapsible className="w-full">
+                <div className="w-full md:w-1/2 "><Accordion type="single" collapsible className="w-full text-lg">
                     <AccordionItem value="item-1">
                         <AccordionTrigger>Is it accessible?</AccordionTrigger>
                         <AccordionContent>

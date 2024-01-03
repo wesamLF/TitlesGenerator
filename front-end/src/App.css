@@ -1,6 +1,7 @@
 #main-btn.active{
-    background-color: rgba(156, 146, 119, 0.466) !important;
-    box-shadow: inset 2px -2px 0px black !important; 
+    background-color: #0a0a0a !important;
+    color: #fff;
+    box-shadow: none !important; 
      cursor: default !important;
     transform: none !important;
 }
@@ -10,7 +11,7 @@
 }
 
 nav .active{
-   border-bottom: 3px solid white;
+   border-bottom: 3px solid #dc2626;
     cursor: default !important;
 }
 

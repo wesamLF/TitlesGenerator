@@ -19,10 +19,10 @@ export default function useFetchGenerateTitlesData() {
     const [loading, setLoading] = useState(false)
     console.log("data form gennn hooks", data)
     const fetchData = (url: string, to: string, topic: string) => {
+        setError(false)
+        setLoading(true)
         if (to == "ai" && data.fromAi.data.length == 0 || to == "ai" && topic != data.fromAi.topic) {
-            console.log("tooooo", to)
-
-            setLoading(true)
+            
             axios.get(url).then(res => {
                 setLoading(false);
                 setData({
@@ -37,7 +37,6 @@ export default function useFetchGenerateTitlesData() {
                 setLoading(false)
             })
         } else if (to == "mostviewed" && data.fromMostViewed.data.length == 0 || to == "mostviewed" && topic != data.fromMostViewed.topic) {
-            setLoading(true)
             axios.get(url).then(res => {
                 setLoading(false);
                 setData({

@@ -1,5 +1,7 @@
 import { useOutletContext } from "react-router-dom"
 import { FromAiTitlesItem } from "../generateTitlesItems/FromAiTitlesItem"
+import LoadingSpinner from "@/utils/LoadingSpinner"
+import ErrorMessage from "@/utils/ErrorMessage"
 
 
 // const titles = [{
@@ -79,10 +81,10 @@ export type aiTitlesType = {
 }
 const GenerateTitlesAi = () => {
   const { fromAi, loading, error }: { fromAi: aiTitlesType[], loading: boolean, error:boolean } = useOutletContext()
-  if (loading) return <h1 className=" text-red-700">loading</h1>
-  if (error) return <h1 className=" text-red-700">error</h1>
+  if (error) return <ErrorMessage  />
+  if (loading) return <div className=" my-28"><LoadingSpinner /></div>
   return (
-    <section className="bg-gray-100 my-8 px-8">
+    <section className="p-4">
 
 
       {fromAi.map((item, i) => (

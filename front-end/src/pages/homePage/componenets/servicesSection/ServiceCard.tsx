@@ -12,6 +12,7 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import { serviceType } from "./ServicesSection"
+import { NavLink } from "react-router-dom"
 
 
 
@@ -21,7 +22,7 @@ type CardProps = React.ComponentProps<typeof Card> & serviceType
 const ServiceCard = ({ className, ...props }: CardProps) => {
 
     return (
-        <Card className={cn("w-[380px] dark bg-background text-foreground shadow-2xl shadow-[#3f3d56] p-4", className)} {...props}>
+        <Card className={cn("w-full md:w-[380px] dark bg-background text-foreground shadow-2xl shadow-[#3f3d56]  p-4", className)} {...props}>
             <div className=" flex items-center space-x-4 rounded-md border border-red-600 p-4">
                 <Flame className="text-red-600" />
                 <div className="flex-1 space-y-1">
@@ -58,9 +59,12 @@ const ServiceCard = ({ className, ...props }: CardProps) => {
                 </div>
             </CardContent>
             <CardFooter>
-                <Button className="w-full">
-                    Discover {props.title}
-                </Button>
+                <NavLink to={`..${props.url}`}>
+
+                    <Button className="w-full text-base ">
+                        Discover {props.title}
+                    </Button>
+                </NavLink>
             </CardFooter>
         </Card>
     )

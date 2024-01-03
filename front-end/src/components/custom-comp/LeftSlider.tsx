@@ -17,7 +17,6 @@ const LeftSlider = () => {
                 <MainBtn name={"Generate"} to={"generate"}/>
 
 
-                <MainBtn name={"Summery"} to={""}/>
 
             </div>
 

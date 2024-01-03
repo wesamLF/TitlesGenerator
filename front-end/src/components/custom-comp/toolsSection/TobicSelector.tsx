@@ -7,7 +7,7 @@ import {
     FormMessage,
   } from "@/components/ui/form"
   import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-  import { langAndTopicType } from "utils/formSchemas.zod";
+  import { langAndTopicType } from "@/utils/formSchemas.zod";
   import { UseFormReturn } from "react-hook-form";
   
   const TopicSelector = ({ form }: {
