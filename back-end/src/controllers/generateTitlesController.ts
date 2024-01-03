@@ -28,11 +28,9 @@ export async function generateTitlesFromMostViewed(req: Request, res: Response, 
             return{...video , generatedTitle: temp[0].generatedTitle}
         })
         res.status(200)
-        
         res.json(fullData)
     } catch (err) {
-        res.status(500)
-        res.json(err)
+        next(err)
     }
 
 }
@@ -43,12 +41,10 @@ export async function generateTitlesFromAI(req: Request, res: Response, next: Ne
     try {
       
         const generatedTitles:generateTitlesAIType[] = await getGeneratedTitlesFromAI(req.params?.tobic || "gaming") 
-       
         
         res.json(generatedTitles)
     } catch (err) {
-        res.status(500)
-        res.json(err)
+        next(err)
     }
 
 }

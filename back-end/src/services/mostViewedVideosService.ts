@@ -1,24 +1,25 @@
 
-import puppeteer, { Page } from "puppeteer";
+import puppeteer, { Browser, Page } from "puppeteer";
 import axios from "axios";
 const ytGamingArabic = `https://www.youtube.com/feed/trending?bp=4gIcGhpnYW1pbmdfY29ycHVzX21vc3RfcG9wdWxhcg%3D%3D`
 const ytMusicArabic = `https://www.youtube.com/feed/trending?bp=4gINGgt5dG1hX2NoYXJ0cw%3D%3D`
 const ytJpMovies = `https://www.youtube.com/feed/trending?bp=4gIKGgh0cmFpbGVycw%3D%3D`
 
 type videoType = {
-    title: string | null,
-    channleName: string | null,
-    views: string | null,
-    videoLink: string | null,
-    channleLink: string | null,
+    title: string,
+    channleName: string,
+    views: string,
+    videoLink: string,
+    channleLink: string,
 
-} | null
+}
 export async function getMostViewedVideos(tobic: string) {
     const ytThisWeekMostViews = `https://www.youtube.com/results?search_query=${tobic}&sp=CAMSAggD`
+    const browser = await puppeteer.launch({
+        headless: true,
+    })
     try {
-        const browser = await puppeteer.launch({
-            headless: true,
-        })
+
         const page = await browser.newPage()
         await page.goto(ytThisWeekMostViews, {
             waitUntil: "networkidle2",
@@ -29,26 +30,29 @@ export async function getMostViewedVideos(tobic: string) {
         const videos: videoType[] = await page.evaluate(() => {
             const all = Array.from(document.querySelectorAll("ytd-video-renderer[bigger-thumbs-style='DEFAULT']"))
             const data = all.map((ele) => {
-                if (ele) {
-                    const title = ele!.querySelector("#video-title")?.getAttribute("title") || null
-                    const videoLink = ele!.querySelector("a#thumbnail")?.getAttribute("href") || null
-                    const channleName = ele!.querySelector(".yt-simple-endpoint.style-scope.yt-formatted-string")?.textContent || null
-                    const channleLink = ele!.querySelector(".yt-simple-endpoint.style-scope.yt-formatted-string")?.getAttribute("href") || null
-                    const views = ele!.querySelector(".inline-metadata-item.style-scope.ytd-video-meta-block")?.textContent || null
-                    // if the querySelector didnt find any element the api should send null instaed
-                    return { title, channleName, views, videoLink, channleLink }
-                } else return null
+
+                const title = ele!.querySelector("#video-title")?.getAttribute("title")
+                const videoLink = ele!.querySelector("a#thumbnail")?.getAttribute("href")
+                const channleName = ele!.querySelector(".yt-simple-endpoint.style-scope.yt-formatted-string")?.textContent
+                const channleLink = ele!.querySelector(".yt-simple-endpoint.style-scope.yt-formatted-string")?.getAttribute("href")
+                const views = ele!.querySelector(".inline-metadata-item.style-scope.ytd-video-meta-block")?.textContent
+                if (!title || !channleName || !views || !videoLink || !channleLink) {
+                    throw new Error()
+                }
+                return { title, channleName, views, videoLink, channleLink }
+
             })
 
 
             return data
         })
         await browser.close()
+        if (videos.length == 0 || !videos) {
+            throw new Error()
+        }
         return videos
 
-    } catch (err) {
-        console.error(`Errorrrr`, err);
-        return null
-
+    } finally {
+        await browser.close()
     }
 }

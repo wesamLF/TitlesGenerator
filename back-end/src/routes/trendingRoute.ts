@@ -1,9 +1,9 @@
 import express from "express"
 const router = express.Router();
-import { trendingVideosController, trendingGenresControoler } from "../controllers/trendingController";
+import { trendingVideosController, trendingGenresController } from "../controllers/trendingController";
 
 router.get('/:genre', trendingVideosController);
-router.get('/:genre/genres', trendingGenresControoler); // return top 5 gnere and the trning videos
+router.get('/:genre/genres', trendingGenresController); // return top 5 gnere and the trning videos
 
 
 
