@@ -9,7 +9,7 @@ import { CopyCheckIcon, Copy } from "lucide-react"
 import { FilterYouTubeEmbedURL } from "../../../../utils/FilterYouTubeEmbedURL"
 import { useState } from "react";
 import { mostViewedTitlesType } from "../generateTitlesMostViewedSection/GenerateTitlesMostViewed";
-import { goTo } from "@/utils/goTo";
+import { goTo } from "@/utils/YTurlRedirect";
 
 export const FromMostViewedTitlesItem = ({ item }: {
     item: mostViewedTitlesType

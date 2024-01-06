@@ -50,7 +50,7 @@ export default function useFetchTrendingData() {
                 setError(true)
                 setLoading(false)
             })
-        }
+        }else{setLoading(false)}
     };
 
     return { fetchData, data, loading, error }

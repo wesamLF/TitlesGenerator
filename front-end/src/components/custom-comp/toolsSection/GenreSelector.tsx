@@ -12,8 +12,7 @@ import { UseFormReturn } from "react-hook-form";
 
 const GenreSelector = ({ form }: {
   form: UseFormReturn<{
-    lang: "english" | "arabic";
-    genre: "gaming" | "vlogs";
+    genre: "gaming" | "music";
   }>
 }) => {
 
@@ -36,7 +35,7 @@ const GenreSelector = ({ form }: {
             </FormControl>
             <SelectContent className="text-base">
               <SelectItem value="gaming">gaming</SelectItem>
-              <SelectItem value="vlogs">vlogs</SelectItem>
+              <SelectItem value="music">music</SelectItem>
 
             </SelectContent>
           </Select>

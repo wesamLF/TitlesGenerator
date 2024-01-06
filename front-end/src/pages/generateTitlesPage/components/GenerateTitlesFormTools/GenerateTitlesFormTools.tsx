@@ -7,23 +7,22 @@ import { Loader2 } from "lucide-react"
 import { Form } from "@/components/ui/form"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-// import {generateTitlesFormSchema} from "../../../../../utils/formSchemas.zod"
-import TobicSelector from "@/components/custom-comp/toolsSection/TobicSelector"
-import LangSelector from "@/components/custom-comp/toolsSection/LangSelector"
+import TopicSelector from "@/components/custom-comp/toolsSection/TopicSelector"
+import GenerateTitlesGenreSelector from "./GenerateTitlesGenreSelector"
 
 
 const generateTitlesFormSchema = z.object({
-  lang: z.enum(["english", "arabic"], {
-    required_error: "You need to select a lang type.",
-  }),
-  topic: z.enum(["valorant", "csgo", "call of duty"], {
+  topic: z.enum(["valorant", "csgo", "fortnite", "rap", "rockandroll"], {
     required_error: "You need to select a topic.",
   }),
 })
 
 const GenerateTitlesFormTools = ({ fetchData, loading }:
   { fetchData: (url: string, to: string, topic: string) => void, loading: boolean }) => {
+
   const [clickedBtn, setClickedBtn] = useState<"mostviewed" | "ai">()
+  const [selectedGenre, setSelectedGenre] = useState<"gaming" | "music">()
+
   const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof generateTitlesFormSchema>>({
@@ -47,7 +46,6 @@ const GenerateTitlesFormTools = ({ fetchData, loading }:
     }
 
   }
-  console.log("gen form render")
 
 
 
@@ -57,10 +55,10 @@ const GenerateTitlesFormTools = ({ fetchData, loading }:
         <form onSubmit={form.handleSubmit(onSubmit)} className="">
           <div className="flex flex-col md:flex-row items-center md:items-end justify-center md:justify-between w-full p-6 gap-5">
             <div className="  flex justify-center items-center w-full md:w-1/4  ">
-              <LangSelector form={form as any} />
+              <GenerateTitlesGenreSelector  setSelectedGenre={setSelectedGenre} />
             </div>
             <div className="  flex justify-center items-center w-full md:w-1/4  ">
-              <TobicSelector form={form} />
+              <TopicSelector form={form} selectedGenre={selectedGenre}/>
             </div>
 
 

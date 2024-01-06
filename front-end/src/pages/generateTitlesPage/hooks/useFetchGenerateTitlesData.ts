@@ -50,6 +50,9 @@ export default function useFetchGenerateTitlesData() {
                 setError(true)
                 setLoading(false)
             })
+        }else {
+
+            setLoading(false)
         }
     };
 

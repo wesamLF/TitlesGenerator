@@ -12,6 +12,7 @@ import Footer from './components/custom-comp/Footer';
 import ContactForm from './pages/homePage/componenets/contactFormSection/ContactForm';
 import TrendingWelcomeMessage from './pages/trendingPage/components/TrendingWelcomeMessage/TrendingWelcomeMessage';
 import GenerateTitlesWelcomeMessage from './pages/generateTitlesPage/components/generateTitlesWelcomeMessage/GenerateTitlesWelcomeMessage';
+import { Toaster } from "@/components/ui/toaster"
 
 
 function App() {
@@ -43,7 +44,8 @@ function App() {
 
       </div>
       <Footer />
-      
+      <Toaster  />
+
 
     </div>
   )

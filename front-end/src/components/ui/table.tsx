@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { goTo } from "@/utils/goTo"
+import { YTurlRedirect } from "@/utils/YTurlRedirect"
 
 const Table = React.forwardRef<
   HTMLTableElement,
@@ -96,13 +96,13 @@ const TableCell = React.forwardRef<
   if (temp?.props?.column?.id === "channleLink") return
   if (temp?.props?.column?.id === "videoLink") return
   if (temp?.props?.column?.id === "channleName") return <td
-  onClick={()=>goTo(channleLink)}
+  onClick={()=>YTurlRedirect(channleLink)}
   ref={ref}
   className={cn("p-4 align-middle [&:has([role=checkbox])]:pr-0", className)}
   {...props}
 />
   if (temp?.props?.column?.id === "title") return <td
-    onClick={()=>goTo(videoLink)}
+    onClick={()=>YTurlRedirect(videoLink)}
     ref={ref}
     className={cn("p-4  align-middle [&:has([role=checkbox])]:pr-0", className)}
     {...props}

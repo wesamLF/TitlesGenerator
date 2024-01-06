@@ -11,9 +11,9 @@ export type langAndGenreType = {
   lang: "arabic" | "english",
   genre: "gaming" | "vlogs",
 }
-export type langAndTopicType = {
-  lang: "arabic" | "english",
-  topic:"valorant" | "csgo" | "call of duty",
+export type generateTitlesFormType = {
+  
+  topic:"valorant" | "csgo" | "fortnite"| "rap"| "rockandroll",
 }
 
 

@@ -1,7 +1,7 @@
 
 
 import useFetchGenerateTitlesData from "./hooks/useFetchGenerateTitlesData"
-import GenerateTitlesFormTools from "./components/GenerateTitlesFormTools/GenerateTitlesFormTools"
+import GenerateTitlesFormTools from "./components/generateTitlesFormTools/GenerateTitlesFormTools"
 import { Outlet } from "react-router-dom"
 import LeftSlider from "@/components/custom-comp/LeftSlider"
 
