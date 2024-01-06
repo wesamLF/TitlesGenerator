@@ -12,15 +12,12 @@ const WelcomeMessage = () => {
       <div className="">
         <p className='text-lg p-1'><span className='font-bold  underline'>  Table Button :</span> is to show the trending in table form.</p>
         <p className='text-lg p-1'><span className='font-bold underline'>Genre Button :</span> analyze the trending and give you top 5 genres.</p>
-
       </div>
       <div className="">
-
         <NavLink to={"../../contact"}>
           <Button>Contact Us</Button>
         </NavLink>
         <p className='text-lg inline ms-2'>for any help you can contact us any time.</p>
-
       </div>
     </div>
   )

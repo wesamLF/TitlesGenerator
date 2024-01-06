@@ -14,26 +14,24 @@ type genresData = {
 }
 const TrendingGenres = () => {
   
-  const { trendingGenres, loading, error }: { trendingGenres: genresData, loading: boolean, error: boolean } = useOutletContext()
+  const { trendingGenresData, loading, error }: { trendingGenresData: genresData, loading: boolean, error: boolean } = useOutletContext()
   
   if (error) return <ErrorMessage  />
   if (loading) return <div className=" my-28"><LoadingSpinner /></div>
-  if (!trendingGenres?.genres) return
+  if (!trendingGenresData?.genres) return
   return (
     <div className=" flex justify-center items-center p-10 ">
       <div className="flex flex-col gap-5 ">
-        {trendingGenres?.genres?.map((g, i) => (
+        {trendingGenresData?.genres?.map((g, i) => (
           <div className="" key={i}>
             <h3 className=" underline font-medium text-xl">{(i+1) +" "+ g.genre}</h3>
             <p>{g.description}</p>
           </div>
         ))}
-
         <Button className="">
           <NavLink to={"../table"} className="w-full">see all trending videos</NavLink>
         </Button>
       </div>
-
     </div>
   )
 }

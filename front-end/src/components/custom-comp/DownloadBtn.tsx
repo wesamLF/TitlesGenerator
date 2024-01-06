@@ -12,7 +12,6 @@ type trendingDataType = {
 }[]
 const DownloadBtn = ({ data }: { data: trendingDataType }) => {
     const { toast } = useToast()
-    console.log(";;;", data)
     const downloadFile = async () => {
      try {
             const res = await axios.post('http://localhost:5000/download/csv', {

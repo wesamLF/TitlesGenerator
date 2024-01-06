@@ -6,18 +6,18 @@ import * as z from "zod"
 import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
 
-import GenreSelector from "../../../../components/custom-comp/toolsSection/GenreSelector"
-import LangSelector from "../../../../components/custom-comp/toolsSection/LangSelector"
+import GenreSelector from "./GenreSelector"
+import LangSelector from "./LangSelector"
 import { Form } from "@/components/ui/form"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 const FormSchema = z.object({
   lang: z.enum(["english", "arabic"], {
-    required_error: "You need to select a lang type.",
+    required_error: "You need to select a language.",
   }),
-  genre: z.enum(["gaming", "vlogs"], {
-    required_error: "You need to select a trending genre.",
+  genre: z.enum(["gaming" , "movies" , "now" , "music"], {
+    required_error: "You need to select a genre.",
   }),
 })
 
@@ -35,7 +35,7 @@ const TrendingFormTools = ({ fetchData, loading }:
 
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-
+console.log("fdata", data)
     if (clickedBtn === "genres") {
       fetchData(`http://localhost:5000/trending/${data.genre}/genres`, "genres", data.genre)
       navigate(`./${clickedBtn}`)
@@ -46,7 +46,6 @@ const TrendingFormTools = ({ fetchData, loading }:
     }
 
   }
-  console.log("tr tool render")
 
 
 

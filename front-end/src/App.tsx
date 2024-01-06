@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import GenerateTitlesContainer from './pages/generateTitlesPage/GenerateTitlesContainer';
 import TrendingTable from './pages/trendingPage/components/trendingTableSection/TrendingTable';
 import TrendingGenres from './pages/trendingPage/components/trendingGenresSection/TrendingGenres';
-import GenerateTitlesAi from './pages/generateTitlesPage/components/generateTitlesAiSectin/GenerateTitlesAi';
+import GenerateTitlesAi from './pages/generateTitlesPage/components/generateTitlesAiSection/GenerateTitlesAi';
 import GenerateTitlesMostViewed from './pages/generateTitlesPage/components/generateTitlesMostViewedSection/GenerateTitlesMostViewed';
 import Home from './pages/homePage/Home';
 import Footer from './components/custom-comp/Footer';
@@ -18,14 +18,12 @@ import { Toaster } from "@/components/ui/toaster"
 function App() {
 
   return (
-    // bg-[#f8f7f1]
     <div className="bg-[#fafafabb]  lg:min-h-screen flex flex-col">
       <Nav />
       <div className=" flex flex-col lg:flex-row">
-
         <Routes>
           <Route path='/home' element={<Home />} />
-          <Route path="*" element={<Home />}/>
+          <Route path="*" element={<Home />} />
           <Route path='/trending' element={<TrendingContainer />}>
             <Route index element={<TrendingWelcomeMessage />} />
             <Route path='table' element={<TrendingTable />} />
@@ -37,14 +35,10 @@ function App() {
             <Route path='mostviewed' element={<GenerateTitlesMostViewed />} />
           </Route>
           <Route path='contact' element={<ContactForm />} />
-
-
         </Routes>
-        
-
       </div>
       <Footer />
-      <Toaster  />
+      <Toaster />
 
 
     </div>

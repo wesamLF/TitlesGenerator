@@ -9,12 +9,11 @@ import {
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 import { UseFormReturn } from "react-hook-form";
-import { langAndGenreType, langAndTopicType } from "@/utils/formSchemas.zod";
+import { langAndGenreType } from "@/utils/formSchemas.zod";
 
 
-type temp = langAndTopicType | langAndGenreType 
 function LangSelector({ form }: {
-    form: UseFormReturn<temp>
+    form: UseFormReturn<langAndGenreType>
 }) {
 
 

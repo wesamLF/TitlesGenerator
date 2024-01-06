@@ -9,12 +9,12 @@ type videosType = {
   trending: VideoData[] | []
 }
 export default function TrendingTable() {
-  const { trendingTable, loading, error }: { trendingTable: videosType, loading: boolean, error: boolean } = useOutletContext()
+  const { trendingTableData, loading, error }: { trendingTableData: videosType, loading: boolean, error: boolean } = useOutletContext()
   if (error) return <ErrorMessage />
   if (loading) return <div className=" my-28"><LoadingSpinner /></div>
   return (
     <>
-      <DataTable columns={columns} data={trendingTable.trending || []} />
+      <DataTable columns={columns} data={trendingTableData?.trending || []} />
     </>
 
 

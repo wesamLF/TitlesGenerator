@@ -7,7 +7,7 @@ import { Loader2 } from "lucide-react"
 import { Form } from "@/components/ui/form"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import TopicSelector from "@/components/custom-comp/toolsSection/TopicSelector"
+import TopicSelector from "@/pages/generateTitlesPage/components/generateTitlesFormTools/TopicSelector"
 import GenerateTitlesGenreSelector from "./GenerateTitlesGenreSelector"
 
 

@@ -19,13 +19,9 @@ const GenerateTitlesTrending = () => {
   if (loading) return <div className=" my-28"><LoadingSpinner /></div>
   return (
     <section className="p-5">
-
       {fromMostViewed.map((item, i) => (
         <FromMostViewedTitlesItem item={item} key={i} />
       ))}
-
-
-
     </section>
   )
 }

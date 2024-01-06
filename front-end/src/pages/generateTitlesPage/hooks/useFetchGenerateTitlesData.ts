@@ -17,7 +17,6 @@ export default function useFetchGenerateTitlesData() {
     })
     const [error, setError] = useState(false)
     const [loading, setLoading] = useState(false)
-    console.log("data form gennn hooks", data)
     const fetchData = (url: string, to: string, topic: string) => {
         setError(false)
         setLoading(true)

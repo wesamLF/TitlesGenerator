@@ -17,18 +17,18 @@ export default function useFetchTrendingData() {
     })
     const [error, setError] = useState(false)
     const [loading, setLoading] = useState(false)
-    console.log("data form trenidningggggg hooks", data)
-    const fetchData = (url: string, to: string, genre: string) => {
+    const fetchData = (url: string, to: "table" | "genres", genre: string) => {
+        console.log("data", data)
         setError(false)
         setLoading(true)
-        if (to == "genres" && data.trendingGenres.data.length == 0 || to == "ai" && genre != data.trendingGenres.genre) {
+        if (to == "genres" && data.trendingGenres.data.length == 0 || to == "genres" && genre != data.trendingGenres.genre) {
             
             axios.get(url).then(res => {
                 setLoading(false);
                 setData({
                     trendingGenres: {
                         genre: genre,
-                        data: res.data as any
+                        data: res.data
                     },
                     trendingTable: {...data.trendingTable}
                 })
@@ -36,13 +36,13 @@ export default function useFetchTrendingData() {
                 setError(true)
                 setLoading(false)
             })
-        } else if (to == "table" && data.trendingTable.data.length == 0 || to == "mostviewed" && genre != data.trendingTable.genre) {
+        } else if (to == "table" && data.trendingTable.data.length == 0 || to == "table" && genre != data.trendingTable.genre) {
             axios.get(url).then(res => {
                 setLoading(false);
                 setData({
                     trendingTable: {
                         genre: genre,
-                        data: res.data as any
+                        data: res.data
                     },
                     trendingGenres: {...data.trendingGenres}
                 })
