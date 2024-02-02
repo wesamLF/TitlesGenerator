@@ -23,17 +23,17 @@ export const FromAiTitlesItem = ({ item }: {
     }
 
     return (
-        <div className="flex justify-between items-center">
-            <Accordion type="single" collapsible className="w-full">
+        <div className="flex justify-between items-center ">
+            <Accordion type="single" collapsible className="w-full ">
                 <AccordionItem value="item-1">
-                    <AccordionTrigger className="text-lg">{item.title}</AccordionTrigger>
+                    <AccordionTrigger className=" text-base md:text-lg text-start">{item.title}</AccordionTrigger>
                     <AccordionContent >
-                        <span className=" text-base">{item.description}</span>
+                        <span className=" text-sm md:text-base">{item.description}</span>
                         
                     </AccordionContent>
                 </AccordionItem>
             </Accordion>
-            <button className="mx-5 " onClick={handleCopy}>
+            <button className=" mx-3 md:mx-5 " onClick={handleCopy}>
                     <Copy className=" h-4 w-4 shrink-0 transition-transform duration-200" />
             </button>
         </div>)

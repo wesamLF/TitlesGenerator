@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button"
 import {
     Form,
     FormControl,
-
     FormField,
     FormItem,
     FormLabel,
@@ -13,6 +12,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
+import emailjs from '@emailjs/browser';
+import { useState } from "react"
+import { Loader2 } from 'lucide-react'
+import { toast } from "@/components/ui/use-toast"
 
 const formSchema = z.object({
     email: z
@@ -37,22 +40,40 @@ const ContactForm = () => {
             message: ""
         },
     })
-
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        
-        console.log(values)
+    const [isLoading, setIsLoading] = useState(false)
+    async function sendEmail(values: z.infer<typeof formSchema>) {
+        setIsLoading(true)
+        emailjs.send('service_0uu24uf', 'template_9k670fm', {
+            subject: values.subject,
+            email: values.email,
+            message: values.message
+        }, 'ZK4zv8rYllGkU9Ai4')
+            .then(() => {
+                setIsLoading(false)
+                toast({
+                    className:"bg-green-500 border-0",
+                    description: <p className="text-base font-normal text-white">"Your message has been sent."</p>,
+                })
+            }, (error) => {
+                setIsLoading(false)
+                toast({
+                    variant: "destructive",
+                    description: error.text,
+                })
+            })
     }
 
 
     return (
         <section id="contact" className=" w-full flex justify-center items-center  my-20 ">
-            <div className="w-full md:w-1/2 dark bg-background text-foreground border border-black  p-16 shadow-2xl shadow-gray-900">
+            <div className="w-full md:w-1/2 dark bg-background text-foreground border border-black  shadow-2xl shadow-gray-900 
+            py-16 px-5 md:px-16">
                 <div className="mb-8">
-                    <h1 className="text-4xl font-bold text-center">Contact Form</h1>
-                    <p className="text-lg text-muted-foreground">Help us to improve our system, We are open to any suggestions and questions. Feel free to contact us.</p>
+                    <h1 className="text-2xl md:text-4xl font-bold text-center">Contact Form</h1>
+                    <p className="text-base md:text-lg text-muted-foreground">Help us to improve our system. We are open to any suggestions and questions. Feel free to contact us.</p>
                 </div>
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+                    <form onSubmit={form.handleSubmit(sendEmail)} className="space-y-3" >
                         <FormField
                             control={form.control}
                             name="email"
@@ -98,7 +119,10 @@ const ContactForm = () => {
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit">Submit</Button>
+                        {isLoading ? <Button disabled>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Please wait
+                        </Button> : <Button type="submit" disabled={isLoading}>Send</Button>}
                     </form>
                 </Form>
             </div>

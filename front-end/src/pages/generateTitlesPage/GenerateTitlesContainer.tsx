@@ -16,9 +16,9 @@ const GenerateTitlesContainer = () => {
     return (
         <>
             <LeftSlider />
-            <section className='p-0 md:px-24 md:py-16  w-full h-full'>
+            <section className='p-0 md:px-24 md:py-16  w-full h-full '>
                 <GenerateTitlesFormTools fetchData={fetchData} loading={loading} />
-                <div className="my-3 h-full min-h-[450px] overflow-auto border border-solid border-[gray] shadow-md shadow-gray-500 bg-white">
+                <div className="min-h-[450px] overflow-auto border border-solid border-[gray] shadow-md shadow-gray-500 bg-white">
                     <div className="">
                         <Outlet context={{ fromMostViewed, fromAi, loading, error }} />
                     </div>

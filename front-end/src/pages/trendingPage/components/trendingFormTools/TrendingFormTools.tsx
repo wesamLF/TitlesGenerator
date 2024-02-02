@@ -22,7 +22,7 @@ const FormSchema = z.object({
 })
 
 const TrendingFormTools = ({ fetchData, loading }:
-  { fetchData: (u: string , to:string,genres:string) => void, loading: boolean }) => {
+  { fetchData: (url: string , to:"table" | "genres",genres:string) => void, loading: boolean }) => {
   const [clickedBtn, setClickedBtn] = useState<"genres" | "table">()
   const navigate = useNavigate();
 
@@ -35,7 +35,6 @@ const TrendingFormTools = ({ fetchData, loading }:
 
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-console.log("fdata", data)
     if (clickedBtn === "genres") {
       fetchData(`http://localhost:5000/trending/${data.genre}/genres`, "genres", data.genre)
       navigate(`./${clickedBtn}`)
@@ -52,7 +51,7 @@ console.log("fdata", data)
   return (
     <div className='border border-solid border-[gray]  shadow-md shadow-gray-500 bg-white mb-3'>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="" id="trending-form">
           <div className="flex flex-col md:flex-row items-center md:items-end justify-center md:justify-between w-full p-6 gap-5">
             <div className="  flex justify-center items-center w-full md:w-1/4 ">
               <LangSelector form={form as any} />

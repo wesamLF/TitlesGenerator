@@ -21,7 +21,6 @@ export default function useFetchGenerateTitlesData() {
         setError(false)
         setLoading(true)
         if (to == "ai" && data.fromAi.data.length == 0 || to == "ai" && topic != data.fromAi.topic) {
-            
             axios.get(url).then(res => {
                 setLoading(false);
                 setData({
@@ -36,7 +35,9 @@ export default function useFetchGenerateTitlesData() {
                 setLoading(false)
             })
         } else if (to == "mostviewed" && data.fromMostViewed.data.length == 0 || to == "mostviewed" && topic != data.fromMostViewed.topic) {
+
             axios.get(url).then(res => {
+
                 setLoading(false);
                 setData({
                     fromMostViewed: {

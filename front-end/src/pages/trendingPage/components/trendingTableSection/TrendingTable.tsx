@@ -14,7 +14,7 @@ export default function TrendingTable() {
   if (loading) return <div className=" my-28"><LoadingSpinner /></div>
   return (
     <>
-      <DataTable columns={columns} data={trendingTableData?.trending || []} />
+      <DataTable  columns={columns} data={trendingTableData?.trending || []} />
     </>
 
 

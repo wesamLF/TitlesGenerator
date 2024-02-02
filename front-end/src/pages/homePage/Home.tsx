@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
 
-    <main className="w-fuldl">
+    <main className="">
       <Hero />
       <ServicesSection />
       <HowItWorks />

@@ -31,7 +31,7 @@ export function DataTable<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
   })
   return (
-    <div className="rounded-md border bg-white">
+    <div className="">
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -59,7 +59,7 @@ export function DataTable<TData, TValue>({
                 data-state={row.getIsSelected() && "selected"}
               >
                 {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id} className=" text-base">
+                  <TableCell key={cell.id} className=" text-xs md:text-base">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}

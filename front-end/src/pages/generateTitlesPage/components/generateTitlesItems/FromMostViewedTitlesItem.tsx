@@ -26,20 +26,19 @@ export const FromMostViewedTitlesItem = ({ item }: {
     }
 
     return (
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center flex-col md:flex-row">
             <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
-                    <AccordionTrigger className="text-lg">{item.generatedTitle}</AccordionTrigger>
+                    <AccordionTrigger className="text-base md:text-lg text-start">{item.generatedTitle}</AccordionTrigger>
                     <AccordionContent >
-                        <h3 className=" text-base underline font-semibold mt-4">this title is generated based on this video:</h3>
+                        <h3 className=" text-sm md:text-base  font-semibold mt-4">this title is generated based on this video:</h3>
                         <div className="flex flex-col md:flex-row p-2 gap-5 bg-stone-200 rounded-sm">
-                            <iframe className="rounded" width="250" height="200"
+                            <iframe className="rounded sm:w-[250px] h-auto " 
                                 loading="eager"
-                                allowFullScreen
                                 src={FilterYouTubeEmbedURL(item.videoLink)}>
                             </iframe>
-                            {item.videoLink}
-                            <div className="w-full text-lg">
+                            
+                            <div className="w-full text-sm md:text-base">
                                 <h4
                                     className=" hover:text-gray-600 cursor-pointer"
                                     onClick={() => YTurlRedirect(item.videoLink)}>{item.title}</h4>
@@ -55,7 +54,7 @@ export const FromMostViewedTitlesItem = ({ item }: {
                     </AccordionContent>
                 </AccordionItem>
             </Accordion>
-            <button className="mx-5 " onClick={handleCopy}>
+            <button className=" mx-4 hidden md:block" onClick={handleCopy}>
                 
                     <Copy className=" h-4 w-4 shrink-0 transition-transform duration-200" />
             </button>

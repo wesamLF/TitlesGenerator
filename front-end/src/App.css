@@ -13,5 +13,11 @@
 nav .active{
    border-bottom: 3px solid #dc2626;
     cursor: default !important;
+
 }
+
+nav .active:hover{
+    color: white !important;
+ 
+ }
 

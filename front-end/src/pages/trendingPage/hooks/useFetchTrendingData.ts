@@ -18,7 +18,6 @@ export default function useFetchTrendingData() {
     const [error, setError] = useState(false)
     const [loading, setLoading] = useState(false)
     const fetchData = (url: string, to: "table" | "genres", genre: string) => {
-        console.log("data", data)
         setError(false)
         setLoading(true)
         if (to == "genres" && data.trendingGenres.data.length == 0 || to == "genres" && genre != data.trendingGenres.genre) {

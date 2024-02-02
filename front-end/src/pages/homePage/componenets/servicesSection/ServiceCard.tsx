@@ -57,8 +57,8 @@ const ServiceCard = ({ className, ...props }: CardProps) => {
             </CardContent>
             <CardFooter>
                 <NavLink to={`..${props.url}`}>
-                    <Button className="w-full text-base ">
-                        Discover {props.title}
+                    <Button className="w-full text-sm md:text-base ">
+                        {props.title}
                     </Button>
                 </NavLink>
             </CardFooter>

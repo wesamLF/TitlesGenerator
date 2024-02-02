@@ -50,7 +50,7 @@ const GenerateTitlesFormTools = ({ fetchData, loading }:
 
 
   return (
-    <div className='border border-solid border-[gray] shadow-md shadow-gray-500  bg-white'>
+    <div className='border border-solid border-[gray] shadow-md shadow-gray-500  bg-white  mb-3'>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="">
           <div className="flex flex-col md:flex-row items-center md:items-end justify-center md:justify-between w-full p-6 gap-5">

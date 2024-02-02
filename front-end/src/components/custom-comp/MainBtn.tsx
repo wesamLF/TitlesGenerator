@@ -15,7 +15,7 @@ const MainBtn = ({ name , to }: { name: string , to :string}) => {
 
     return (
 
-        <NavLink id="main-btn" to={`/${to}`} className=" text-2xl py-1 px-8 border-2 border-solid bg-white border-black cursor-pointer font-semibold"
+        <NavLink id="main-btn" to={`/${to}`} className=" text-lg md:text-2xl py-1 px-8 border-2 border-solid bg-white border-black cursor-pointer font-semibold"
             style={hoverStyles}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
